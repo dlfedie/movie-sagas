@@ -6,6 +6,10 @@ import Edit from '../Edit/Edit';
 
 import './App.css';
 
+//this.props.match.params.id
+
+
+
 class App extends Component {
   render() {
     return (
