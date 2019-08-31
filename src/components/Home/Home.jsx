@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
+import {connect} from 'react-redux';
 
 
 class Home extends Component {
+    //on component load, go get our movies from DB
+    componentDidMount() {
+        this.getMovies();
+    }
+
+    //separate the GET request so it can be recalled
+    getMovies = () => {
+        // console.log('getting movies');
+        this.props.dispatch({
+            type: 'FETCH_MOVIES'
+        })
+        
+    }
+
     render() {
         return (
             <div>
@@ -15,4 +30,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default connect()(Home);
