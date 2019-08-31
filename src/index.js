@@ -23,8 +23,11 @@ function* rootSaga() {
 function* fetchMovies(action) {
     try {
         let fetchResponse = yield axios.get('/api/movies')
-        console.log(fetchResponse);
-        
+        console.log('getting fetchresponse of:', fetchResponse);
+        yield put({
+            type: 'SET_MOVIES',
+            payload: fetchResponse.data
+        })
     } catch (err) {
         console.log('error in fetchMovies GET:', err);
 

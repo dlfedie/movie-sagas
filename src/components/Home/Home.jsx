@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+
 
 
 class Home extends Component {
@@ -15,19 +16,46 @@ class Home extends Component {
         this.props.dispatch({
             type: 'FETCH_MOVIES'
         })
-        
+
     }
 
     render() {
+
+        //need to map over our array of movies so we can render them on the DOM
+        let movieList = this.props.movies.map((movie, index) => {
+            return (
+
+                <div key={index} className="movieItem">
+                    <span className="moviePoster">
+                        <img src={movie.poster} alt="movie poster for this movie" />
+                    </span>
+                    <div className="movieTextDiv">
+                        <h2 className="movieTitle">{movie.title}</h2>
+                        <p className="movieDescription">{movie.description}</p>
+                    </div>
+
+                </div>
+            )
+        })
+
         return (
             <div>
                 <Header />
-                <h2>Home</h2>
-              
-                
+                <h1>Home</h1>
+                {/* {JSON.stringify(this.props.movies)} */}
+                <ul className="movieList" >
+                    {movieList}
+                </ul>
+
             </div>
         );
     }
 }
 
-export default connect()(Home);
+const mapStateToProps = (reduxStore) => {
+    return {
+        movies: reduxStore.movies
+    }
+}
+
+export default connect(mapStateToProps)(Home);
