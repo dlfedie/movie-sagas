@@ -23,5 +23,23 @@ router.get('/', (req, res) => {
         })
 })
 
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    console.log('in specific ID GET:', id);
+    const queryText = `SELECT "movies".id, "movies".title, array_agg("genres".name) AS "movie_genres", "movies".description FROM "movies"
+                    JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
+                    JOIN "genres" ON "movies_genres".genres_id = "genres".id
+                    WHERE "movies".id = $1
+                    GROUP BY "movies".id;`;
+    pool.query(queryText, [id])
+        .then(result => {
+            console.log('result from specific ID GET', result.rows);
+            //getting rows plural back, only need to send the first
+            res.send(result.rows[0])
+        }).catch(err => {
+            res.sendStatus(500);
+        })
+})
+
 
 module.exports = router;

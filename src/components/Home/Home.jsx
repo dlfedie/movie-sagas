@@ -16,18 +16,27 @@ class Home extends Component {
         this.props.dispatch({
             type: 'FETCH_MOVIES'
         })
+    }
 
+    clickedPoster = (id) => {
+        //see if we can get movie id
+        console.log('clicked poster', id);
+        this.props.dispatch({
+            type: 'GET_DETAILS',
+            payload: id
+        });
+        this.props.history.push('/details');
     }
 
     render() {
 
         //need to map over our array of movies so we can render them on the DOM
-        let movieList = this.props.movies.map((movie, index) => {
+        let movieList = this.props.movies.map((movie) => {
             return (
 
-                <div key={index} className="movieItem">
+                <div key={movie.id} className="movieItem">
                     <span className="moviePoster">
-                        <img src={movie.poster} alt="movie poster for this movie" />
+                        <img src={movie.poster} alt="movie poster for this movie" onClick={()=> this.clickedPoster(movie.id)}/>
                     </span>
                     <div className="movieTextDiv">
                         <h2 className="movieTitle">{movie.title}</h2>
