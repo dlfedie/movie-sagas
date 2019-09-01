@@ -16,7 +16,7 @@ class Edit extends Component {
         //also refresh details page with new edits - done in our Saga
 
         //then send to details page
-        this.props.history.push('/details')
+        this.props.history.push(`/details/${this.props.match.params.id}`)
 
     }
 
@@ -46,7 +46,7 @@ class Edit extends Component {
 
             <div>
                 <Header />
-                <button onClick={() => { this.props.history.push('/details') }}>Cancel</button>
+                <button onClick={() => { this.props.history.push(`/details/${this.props.match.params.id}`) }}>Cancel</button>
                 <button onClick={() => this.saveEdits()}>Save</button>
                 <input value={this.props.edit.title} onChange={this.handleChangeFor('title')}></input>
                 <textarea rows="6" cols="75" value={this.props.edit.description} onChange={this.handleChangeFor('description')}></textarea>

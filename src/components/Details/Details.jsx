@@ -36,7 +36,7 @@ class Details extends Component {
             <div>
                 <Header />
                 <button onClick={()=> {this.props.history.push('/')}}>Back</button>
-                <button onClick={()=> this.props.history.push('/edit')}>Edit</button>
+                <button onClick={() => this.props.history.push(`/edit/${this.props.match.params.id}`)}>Edit</button>
                 <h1>{this.props.details.title}</h1>
                 <p>{this.props.details.description}</p>
                 <ul>
