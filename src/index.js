@@ -44,8 +44,13 @@ function* getDetails(action) {
             payload: getDetailsResponse
         })
         yield console.log('sent details to reducer');
-        
-        // let fetchResponse = yield axios.get(`/api/details/${id}`);
+        //also want to send details to edit page
+        yield put({
+            type: 'SET_EDIT',
+            payload: getDetailsResponse
+        })
+
+
         
     } catch (err) {
         console.log('error in getDetails GET', err);
@@ -66,10 +71,28 @@ const movies = (state = [], action) => {
     }
 }
 
+//have to set state with array object pre-defined inside.
 const details = (state = {movie_genres: []}, action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload.data;
+        default:
+            return state;
+    }
+}
+
+//create an edit store that is separate from the details data, in case we cancel. state is same as details, basically
+const edit = (state = { movie_genres: [] }, action) => {
+    switch (action.type) {
+        case 'SET_EDIT':
+            return action.payload.data;
+        case 'CHANGE_EDIT_TITLE':
+            console.log('in our edit reducer-title, here is what it gets:', action.payload);
+            return {...state, title: action.payload}
+        case 'CHANGE_EDIT_DESCRIPTION':
+            console.log('in our edit reducer-description, here is what it gets:', action.payload);
+            return {...state, description: action.payload}
+           
         default:
             return state;
     }
@@ -92,6 +115,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         details,
+        edit,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
