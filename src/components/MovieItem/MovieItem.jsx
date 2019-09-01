@@ -6,19 +6,20 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     //used for styling page
-    card: {
-        maxWidth: 500,
-        justifyContent: 'center',
-        display: 'center'
-        // aligncontent: center
-    }
+    // card: {
+    //     minWidth: 500,
+    //     maxWidth: 500,
+    //     justifyContent: 'center',
+    //     display: 'center'
+    //     // aligncontent: center
+    // }
 
 });
 
 
 class MovieItem extends Component {
     render() {
-        const { classes } = this.props;
+        // const { classes } = this.props;
 
         return (
                 <div key={this.props.movie.id} className="movieItem" >

@@ -25,6 +25,8 @@
 
 .movieItem {
   border: black 1px solid;
+  border-radius: 2%;
+  width: 350px;
 }
 
 

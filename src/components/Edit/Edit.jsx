@@ -104,7 +104,6 @@ class Edit extends Component {
                                 value={this.props.edit.description}
                                 onChange={this.handleChangeFor('description')}
                                 fullWidth
-                                defaultValue="Default Value"
                                 className={classes.textField}
                                 margin="normal"
                                 variant="outlined"

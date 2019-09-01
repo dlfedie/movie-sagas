@@ -6,6 +6,7 @@ import MovieItem from '../MovieItem/MovieItem';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 // styling for the Home page 
 const styles = theme => ({
@@ -18,7 +19,8 @@ const styles = theme => ({
     },
     gridList: {
         width: 'auto',
-        height: 'auto'
+        height: 'auto',
+        justifyContent: 'center'
     }
 });
 
@@ -60,7 +62,11 @@ class Home extends Component {
         })
 
         //for Material UI
-        const { classes } = this.props;
+        const { classes, width } = this.props;
+
+        let columns = width === 'xs' || width === 'sm' ? 1 : 3;
+
+        
 
         return (
             <div>
@@ -72,7 +78,7 @@ class Home extends Component {
                 </ul> */}
                 <div className={classes.root}>
                     <GridList
-                        cols={3}
+                        cols={'auto'}
                         cellHeight={'auto'}
                         spacing={15}
                         className={classes.gridList}
