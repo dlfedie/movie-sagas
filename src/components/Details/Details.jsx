@@ -1,10 +1,33 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import {connect} from 'react-redux';
+// import {withRouter} from 'react-router-dom';
 
 
 class Details extends Component {
+
+    state ={
+        initialMatchID: this.props.match.params.id
+    }
+
+    componentDidMount() {
+        //if user types in /2, it'll load id 2, etc
+        this.props.dispatch({
+            type: 'GET_DETAILS',
+            payload: this.props.match.params.id
+        });
+
+    }
+
+
+
     render() {
+        console.log('match id:', this.props.match.params.id);
+        
+
+        
+        
+
         let genres = this.props.details.movie_genres.map((genre) => {
             return <li key={genre}>{genre}</li>
         })
