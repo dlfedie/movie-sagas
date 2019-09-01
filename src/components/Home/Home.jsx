@@ -26,7 +26,7 @@ class Home extends Component {
             type: 'GET_DETAILS',
             payload: id
         });
-        this.props.history.push('/details');
+        this.props.history.push(`/details/${id}`);
     }
 
     render() {
