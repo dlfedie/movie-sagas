@@ -2,7 +2,25 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
 import MovieItem from '../MovieItem/MovieItem';
+//material-ui imports
+import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 
+// styling for the Home page 
+const styles = theme => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+        backgroundColor: theme.palette.background.paper
+    },
+    gridList: {
+        width: 'auto',
+        height: 'auto'
+    }
+});
 
 
 class Home extends Component {
@@ -35,19 +53,32 @@ class Home extends Component {
         let movieList = this.props.movies.map((movie) => {
             return (
                 //this is a separate component, to make this smaller
-                <MovieItem movie={movie} clickedPoster={this.clickedPoster} key={movie.id} />
+                <GridListTile key={movie.id} cols={1} rows={1}>
+                    <MovieItem movie={movie} clickedPoster={this.clickedPoster} key={movie.id} />
+                </GridListTile>
             )
         })
+
+        //for Material UI
+        const { classes } = this.props;
 
         return (
             <div>
                 <Header />
                 <h1>Movie Collection</h1>
                 {/* {JSON.stringify(this.props.movies)} */}
-                <ul className="movieList" >
+                {/* <ul className="movieList" >
                     {movieList}
-                </ul>
-
+                </ul> */}
+                <div className={classes.root}>
+                    <GridList
+                        cols={3}
+                        cellHeight={'auto'}
+                        spacing={4}
+                        className={classes.gridList}>
+                        {movieList}
+                    </GridList>
+                </div>
             </div>
         );
     }
@@ -59,4 +90,4 @@ const mapStateToProps = (reduxStore) => {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(withStyles(styles)(Home));

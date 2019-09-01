@@ -10,49 +10,27 @@
   color: white;
 }
 
-.movieList {
-  list-style-type: none;
-  padding: 0;
-}
+
 
 .movieTitle {
   margin: 3%;
   flex-wrap: none;
-  justify-content: left;
-  text-align: left;
+  /* justify-content: left;
+  text-align: left; */
 }
 
 .moviePoster {
   margin: 3%;
 }
 
-.movieItem {
-  display: inline-flex;
-  justify-content: left;
-  display: flex;
-  flex-direction: row;
-}
 
-.movieDescription {
-  display: block;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  text-align: left;
-}
 
 .movieTextDiv {
   margin-top: 4%;
 }
 
-/* .App-title {
-  font-size: 1.5em;
+.cardCenter {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
 }
-
-.App-intro {
-  font-size: large;
-} */
-
-/* @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */

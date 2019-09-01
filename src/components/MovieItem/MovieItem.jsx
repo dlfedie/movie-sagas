@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 
+//material-ui imports
+import { withStyles } from '@material-ui/core/styles';
+
+
+
+const styles = theme => ({
+    //used for styling page
+    image: {
+        height: '100%',
+        width: 'auto',
+        objectFit: 'cover'
+    },
+    
+});
+
 
 class MovieItem extends Component {
     render() {
-        
+        const { classes } = this.props;
 
         return (
             <div key={this.props.movie.id} className="movieItem">
@@ -12,7 +27,8 @@ class MovieItem extends Component {
                 </span>
                 <div className="movieTextDiv">
                     <h2 className="movieTitle">{this.props.movie.title}</h2>
-                    <p className="movieDescription">{this.props.movie.description}</p>
+                    {/* removed description from main page, as it looks gross. better on details */}
+                    {/* <p className="movieDescription">{this.props.movie.description}</p> */}
                 </div>
             </div>
         );
@@ -20,4 +36,4 @@ class MovieItem extends Component {
 }
 
 
-export default MovieItem;
+export default (withStyles(styles)(MovieItem));
