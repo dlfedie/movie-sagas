@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('in specific ID GET:', id);
-    const queryText = `SELECT "movies".id, "movies".title, array_agg("genres".name) AS "movie_genres", "movies".description FROM "movies"
+    const queryText = `SELECT "movies".id, "movies".title, "movies".poster, array_agg("genres".name) AS "movie_genres", "movies".description FROM "movies"
                     JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
                     JOIN "genres" ON "movies_genres".genres_id = "genres".id
                     WHERE "movies".id = $1
