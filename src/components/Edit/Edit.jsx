@@ -5,26 +5,13 @@ import { connect } from 'react-redux';
 
 class Edit extends Component {
 
-    // state = {
-    //     movieEdit:
-    //     {
-    //         title: '',
-    //         description: ''
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     this.setState({
-    //         title: this.props.details.title,
-    //         description: this.props.details.description
-    //     })
-    // }
 
     saveEdits = () => {
         console.log('clicked on Save button!', this.props.edit);
         //want to send edits to server/db
         //also refresh details page with new edits
         //then send to details page
+        this.props.history.push('/details')
 
     }
 
@@ -70,7 +57,6 @@ class Edit extends Component {
 }
 const mapStateToProps = (reduxStore) => {
     return {
-        details: reduxStore.details,
         edit: reduxStore.edit
     }
 }
