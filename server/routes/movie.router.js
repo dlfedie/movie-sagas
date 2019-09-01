@@ -37,8 +37,28 @@ router.get('/:id', (req, res) => {
             //getting rows plural back, only need to send the first
             res.send(result.rows[0])
         }).catch(err => {
+            console.log('error in specific ID GET', err);
+            //send back server error
             res.sendStatus(500);
         })
+})
+
+router.put('/', (req, res) => {
+    const updatedMovie = req.body;
+    console.log('in PUT request, here is data:', updatedMovie);
+    const queryText = `UPDATE "movies"
+                        SET "title" = $1, "description" = $2
+                        WHERE "id" = $3;`;
+    pool.query(queryText, [updatedMovie.title, updatedMovie.description, updatedMovie.id])
+        .then(result => {
+            //send back thumbs up if PUT works
+            res.sendStatus(201);
+        }).catch(err => {
+            console.log('error in PUT request (movie edit):', err);
+            //send back server error if errors
+            res.sendStatus(500);
+        })
+    
 })
 
 

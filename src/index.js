@@ -18,6 +18,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies);
     yield takeEvery('GET_DETAILS', getDetails);
+    yield takeEvery('SAVE_EDIT', saveEdit);
 }
 
 //Sagas!
@@ -50,13 +51,29 @@ function* getDetails(action) {
             payload: getDetailsResponse
         })
 
-
-        
     } catch (err) {
         console.log('error in getDetails GET', err);
+    }
+}
+
+function* saveEdit(action) {
+    try {
+        //log to see what we get
+        yield console.log('saveEdit, what it gets from save btn:', action.payload);
+        //actually send data to server
+        yield axios.put('/api/movies', action.payload);
+        //then do a get details of that same ID we just updated
+        yield put({
+            type: 'GET_DETAILS',
+            payload: action.payload.id
+        })
+
+    } catch (err) {
+        console.log('error in saveEdit PUT', err);
         
     }
 }
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
