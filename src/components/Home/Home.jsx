@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
+import MovieItem from '../MovieItem/MovieItem';
 
 
 
@@ -33,24 +34,15 @@ class Home extends Component {
         //need to map over our array of movies so we can render them on the DOM
         let movieList = this.props.movies.map((movie) => {
             return (
-
-                <div key={movie.id} className="movieItem">
-                    <span className="moviePoster">
-                        <img src={movie.poster} alt="movie poster for this movie" onClick={()=> this.clickedPoster(movie.id)}/>
-                    </span>
-                    <div className="movieTextDiv">
-                        <h2 className="movieTitle">{movie.title}</h2>
-                        <p className="movieDescription">{movie.description}</p>
-                    </div>
-
-                </div>
+                //this is a separate component, to make this smaller
+                <MovieItem movie={movie} clickedPoster={this.clickedPoster} key={movie.id} />
             )
         })
 
         return (
             <div>
                 <Header />
-                <h1>Home</h1>
+                <h1>Movie Collection</h1>
                 {/* {JSON.stringify(this.props.movies)} */}
                 <ul className="movieList" >
                     {movieList}
