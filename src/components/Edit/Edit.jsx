@@ -9,7 +9,12 @@ class Edit extends Component {
     saveEdits = () => {
         console.log('clicked on Save button!', this.props.edit);
         //want to send edits to server/db
-        //also refresh details page with new edits
+        this.props.dispatch({
+            type: 'SAVE_EDIT',
+            payload: this.props.edit
+        })
+        //also refresh details page with new edits - done in our Saga
+
         //then send to details page
         this.props.history.push('/details')
 
@@ -48,7 +53,7 @@ class Edit extends Component {
                 <ul>
                     {genres}
                 </ul>
-                {JSON.stringify(this.props.edit)}
+                {/* {JSON.stringify(this.props.edit)} */}
 
             </div>
 
