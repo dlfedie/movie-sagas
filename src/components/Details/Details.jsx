@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 
 //material ui
 import { withStyles } from '@material-ui/core/styles';
@@ -14,11 +13,6 @@ import CardContent from '@material-ui/core/CardContent';
 
 const styles = theme => ({
     //used for styling page
-    image: {
-        height: '100%',
-        width: 'auto',
-        objectFit: 'cover'
-    },
     chip: {
         margin: theme.spacing(1),
     },
@@ -34,9 +28,6 @@ const styles = theme => ({
 
 class Details extends Component {
 
-    state = {
-        initialMatchID: this.props.match.params.id
-    }
 
     componentDidMount() {
         //if user types in /2, it'll load id 2, etc
@@ -103,4 +94,4 @@ const mapStateToProps = (reduxStore) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(withStyles(styles)(Details)));
+export default connect(mapStateToProps)(withStyles(styles)(Details));

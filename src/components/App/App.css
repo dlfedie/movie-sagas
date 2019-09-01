@@ -23,6 +23,10 @@
   margin: 3%;
 }
 
+.movieItem {
+  border: black 1px solid;
+}
+
 
 
 .movieTextDiv {
