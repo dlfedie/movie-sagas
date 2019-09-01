@@ -74,8 +74,10 @@ class Home extends Component {
                     <GridList
                         cols={3}
                         cellHeight={'auto'}
-                        spacing={4}
-                        className={classes.gridList}>
+                        spacing={15}
+                        className={classes.gridList}
+                        
+                        >
                         {movieList}
                     </GridList>
                 </div>
