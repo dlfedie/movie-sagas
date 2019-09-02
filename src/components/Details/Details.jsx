@@ -19,7 +19,8 @@ const styles = theme => ({
     card: {
         maxWidth: 500,
         justifyContent: 'center',
-        display: 'center'
+        display: 'center',
+        height: 'fill'
         // aligncontent: center
     }
 
@@ -56,7 +57,7 @@ class Details extends Component {
         return (
             <div>
                 <Header />
-                <ButtonGroup aria-label="full-width contained primary button group">
+                <ButtonGroup aria-label="full-width contained primary button group" className="buttons">
                     <Button onClick={() => { this.props.history.push('/') }}
                         variant="contained"
                         color="secondary">

@@ -72,7 +72,7 @@ class Edit extends Component {
 
             <div>
                 <Header />
-                <ButtonGroup aria-label="full-width contained primary button group">
+                <ButtonGroup aria-label="full-width contained primary button group" className="buttons">
                     <Button onClick={() => { this.props.history.push(`/details/${this.props.match.params.id}`) }}
                         variant="contained"
                         color="secondary">

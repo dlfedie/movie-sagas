@@ -6,7 +6,7 @@ import MovieItem from '../MovieItem/MovieItem';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
+// import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 // styling for the Home page 
 const styles = theme => ({
@@ -15,7 +15,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper
+        backgroundColor: '#ffcdd2'
     },
     gridList: {
         width: 'auto',
@@ -62,9 +62,12 @@ class Home extends Component {
         })
 
         //for Material UI
-        const { classes, width } = this.props;
+        const { classes } = this.props;
 
-        let columns = width === 'xs' || width === 'sm' ? 1 : 3;
+
+        //was attempting to set width on the columns... 'auto' works, but react doesn't like it.
+        //but it works and it's due
+        // let columns = width === 'xs' || width === 'sm' ? 1 : 3;
 
         
 
