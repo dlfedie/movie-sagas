@@ -30,6 +30,7 @@ const styles = theme => ({
 
 class Details extends Component {
 
+    //this will help if the page reloads
     componentDidMount() {
         //if user types in /2, it'll load id 2, etc
         this.props.dispatch({
