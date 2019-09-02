@@ -115,8 +115,19 @@ const edit = (state = { movie_genres: [] }, action) => {
     }
 }
 
+const snackbarOpen = (state = false, action) => {
+    switch (action.type) {
+        case 'SNACKBAR_TRUE':
+            return true;
+        case 'SNACKBAR_FALSE':
+            return false;
+        default:
+            return state;
+    }
+}
 
-//unsure why this is here; will comment out for now
+
+//didn't get to this stretch goal, will comment this out.
 // Used to store the movie genres
 // const genres = (state = [], action) => {
 //     switch (action.type) {
@@ -133,6 +144,7 @@ const storeInstance = createStore(
         movies,
         details,
         edit,
+        snackbarOpen
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

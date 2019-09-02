@@ -75,6 +75,7 @@ class Home extends Component {
             <div>
                 <Header />
                 <h1>Movie Collection</h1>
+                <p>Click on a movie poster to see its details!</p>
                 {/* {JSON.stringify(this.props.movies)} */}
                 {/* <ul className="movieList" >
                     {movieList}

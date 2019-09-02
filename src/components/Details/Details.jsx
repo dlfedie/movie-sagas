@@ -10,6 +10,8 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
+import SnackbarNotification from '../SnackbarNotification/SnackbarNotification';
+
 
 const styles = theme => ({
     //used for styling page
@@ -29,7 +31,6 @@ const styles = theme => ({
 
 class Details extends Component {
 
-
     componentDidMount() {
         //if user types in /2, it'll load id 2, etc
         this.props.dispatch({
@@ -45,9 +46,6 @@ class Details extends Component {
         console.log('match id:', this.props.match.params.id);
 
         const { classes } = this.props;
-
-
-
 
 
         let genres = this.props.details.movie_genres.map((genre) => {
@@ -80,10 +78,9 @@ class Details extends Component {
                     </Card>
                 </div>
 
-
-
                 {/* {JSON.stringify(this.props.details)} */}
-
+                <SnackbarNotification />
+                
             </div>
         );
     }

@@ -29,7 +29,6 @@ const styles = theme => ({
 
 class Edit extends Component {
 
-
     saveEdits = () => {
         console.log('clicked on Save button!', this.props.edit);
         //want to send edits to server/db
@@ -41,6 +40,11 @@ class Edit extends Component {
 
         //then send to details page
         this.props.history.push(`/details/${this.props.match.params.id}`)
+
+        //then snackbar!
+        this.props.dispatch({
+            type: 'SNACKBAR_TRUE'
+        });
 
     }
 
@@ -57,8 +61,8 @@ class Edit extends Component {
                 payload: event.target.value
             })
         }
-
     }
+
 
     render() {
 
@@ -82,6 +86,7 @@ class Edit extends Component {
                         color="primary">
                         Save</Button>
                 </ButtonGroup>
+                
 
                 <div className="cardCenter">
                     <Card className={classes.card}>
