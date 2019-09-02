@@ -32,6 +32,17 @@ const styles = theme => ({
 
 class Edit extends Component {
 
+
+    //this will help if page reloads. on reload, the textarea labels go wonky, but out of time.
+    componentDidMount() {
+        //if user types in /2, it'll load id 2, etc
+        this.props.dispatch({
+            type: 'GET_DETAILS',
+            payload: this.props.match.params.id
+        });
+
+    }
+
     saveEdits = () => {
         console.log('clicked on Save button!', this.props.edit);
         //want to send edits to server/db
