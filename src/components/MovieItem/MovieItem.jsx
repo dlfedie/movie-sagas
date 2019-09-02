@@ -1,25 +1,9 @@
 import React, { Component } from 'react';
 
-//material-ui imports
-import { withStyles } from '@material-ui/core/styles';
-
-
-const styles = theme => ({
-    //used for styling page
-    // card: {
-    //     minWidth: 500,
-    //     maxWidth: 500,
-    //     justifyContent: 'center',
-    //     display: 'center'
-    //     // aligncontent: center
-    // }
-
-});
-
+//just a component to store each movie item
 
 class MovieItem extends Component {
     render() {
-        // const { classes } = this.props;
 
         return (
                 <div key={this.props.movie.id} className="movieItem" >
@@ -37,4 +21,4 @@ class MovieItem extends Component {
 }
 
 
-export default (withStyles(styles)(MovieItem));
+export default MovieItem;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//used BrowserRouter to allow typing /details/1 or w/e # into the url allows it to load. had no luck
+//with HashRouter
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../Home/Home';
 import Details from '../Details/Details';
@@ -8,6 +10,9 @@ import './App.css';
 //material UI
 import 'typeface-roboto';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+//create our color palette here. possibly could have set other color variants instead of editing
+//directly into App.css, but this was quicker. the color themes were however taken from Material's
+//color picker, so they should follow that direction (lighter/darker, etc)
 const theme = createMuiTheme({
   //color palette
   palette: {
@@ -19,10 +24,6 @@ const theme = createMuiTheme({
     }
   }
 })
-
-
-
-//this.props.match.params.id
 
 
 

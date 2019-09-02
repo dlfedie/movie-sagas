@@ -6,6 +6,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //routes
+
+//basic GET route for main page. to get all movies.
 router.get('/', (req, res) => {
     console.log('in moives router GET');
     
@@ -23,6 +25,8 @@ router.get('/', (req, res) => {
         })
 })
 
+//specific GET route to get a particular movie's info, including the genres.
+//this uses joins and array_agg to get those genres in one box on the return.
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log('in specific ID GET:', id);
@@ -43,6 +47,7 @@ router.get('/:id', (req, res) => {
         })
 })
 
+//PUT route to edit the title and description of a movie.
 router.put('/', (req, res) => {
     const updatedMovie = req.body;
     console.log('in PUT request, here is data:', updatedMovie);

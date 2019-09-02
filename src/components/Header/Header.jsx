@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+//separate Header component for header fun. copyright Mystery Science Theater 3000 and the respective movies the quotes are from.
 class Header extends Component {
 
     state = {
@@ -15,8 +15,9 @@ class Header extends Component {
     }
 
 
-
     render() {
+
+        //yes, yes, editing title/description will cause it to re-render and generate a new quote on each keypress. time constraints, time constraints.
         let randomNumber = Math.floor(Math.random() * 6)
         
         let quote = this.state.quotes[randomNumber]

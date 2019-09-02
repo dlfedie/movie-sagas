@@ -11,6 +11,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 
+//styles for material
 const styles = theme => ({
     //used for styling page
     chip: {
@@ -26,6 +27,8 @@ const styles = theme => ({
 });
 
 
+//component is basically the same as the details, but spits our title and description into 
+//inputs; now TextFields from material.
 
 class Edit extends Component {
 
@@ -41,13 +44,15 @@ class Edit extends Component {
         //then send to details page
         this.props.history.push(`/details/${this.props.match.params.id}`)
 
-        //then snackbar!
+
+        //then snackbar! was going to try this on cancel, but out of time.
         this.props.dispatch({
             type: 'SNACKBAR_TRUE'
         });
 
     }
 
+    //this is our event change listener for each text field: Title and Description
     handleChangeFor = (propertyName) => (event) => {
         console.log('event happened in:', propertyName);
         if (propertyName === 'title') {
@@ -68,6 +73,7 @@ class Edit extends Component {
 
         const { classes } = this.props;
 
+        //map over genres and display, same as details page
         let genres = this.props.edit.movie_genres.map((genre) => {
             return <Chip label={genre} className={classes.chip} color="primary" key={genre} />
         })
@@ -119,7 +125,7 @@ class Edit extends Component {
                     </Card>
                 </div>
 
-
+                {/* this was original input/textarea content */}
                 {/* <input value={this.props.edit.title} onChange={this.handleChangeFor('title')}></input> */}
                 {/* <textarea rows="6" cols="75" value={this.props.edit.description} onChange={this.handleChangeFor('description')}></textarea> */}
                 {/* {JSON.stringify(this.props.edit)} */}

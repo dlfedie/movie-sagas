@@ -12,7 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import SnackbarNotification from '../SnackbarNotification/SnackbarNotification';
 
-
+//for material. again, some things I styled in App.css. Unsure if it's ok to mix, or best to do one or the other.
 const styles = theme => ({
     //used for styling page
     chip: {
@@ -25,7 +25,6 @@ const styles = theme => ({
         height: 'fill'
         // aligncontent: center
     }
-
 });
 
 
@@ -43,11 +42,13 @@ class Details extends Component {
 
 
     render() {
+        //this was for checking the props.match.params.id, and odd behavior when i was originally using HashRouter.
+        //using BrowserRouter fixed the issue
         console.log('match id:', this.props.match.params.id);
 
         const { classes } = this.props;
 
-
+        //map over the genres on the movie and put them in Chips!
         let genres = this.props.details.movie_genres.map((genre) => {
             return <Chip label={genre} className={classes.chip} color="primary" key={genre} />
         })
@@ -79,6 +80,7 @@ class Details extends Component {
                 </div>
 
                 {/* {JSON.stringify(this.props.details)} */}
+                {/* import snackbar component to allow notifications here */}
                 <SnackbarNotification />
                 
             </div>
