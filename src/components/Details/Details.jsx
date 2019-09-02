@@ -60,7 +60,7 @@ class Details extends Component {
                     <Button onClick={() => { this.props.history.push('/') }}
                         variant="contained"
                         color="secondary">
-                        Back</Button>
+                        Back to List</Button>
                     <Button onClick={() => this.props.history.push(`/edit/${this.props.match.params.id}`)}
                         variant="contained"
                         color="primary">
