@@ -22,6 +22,8 @@ function* rootSaga() {
 }
 
 //Sagas!
+
+//this one gets all of the movies from our server/db, then sets them in redux Store
 function* fetchMovies(action) {
     try {
         let fetchResponse = yield axios.get('/api/movies')
@@ -35,6 +37,9 @@ function* fetchMovies(action) {
     }
 }
 
+
+//this will get details on a particular movie, including the genres.
+//also sets those details in local redux store for the details and the edit stores.
 function* getDetails(action) {
     try {
         yield console.log('in getDetails', action.payload);
@@ -56,6 +61,7 @@ function* getDetails(action) {
     }
 }
 
+//this will update the details/title of an edited movie
 function* saveEdit(action) {
     try {
         //log to see what we get
@@ -70,7 +76,6 @@ function* saveEdit(action) {
 
     } catch (err) {
         console.log('error in saveEdit PUT', err);
-        
     }
 }
 
@@ -78,7 +83,7 @@ function* saveEdit(action) {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Used to store movies returned from the server
+// Used to store movies returned from the server. this is the Home page
 const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
@@ -88,6 +93,7 @@ const movies = (state = [], action) => {
     }
 }
 
+//this is the details store for when a user clicks on a movie poster
 //have to set state with array object pre-defined inside.
 const details = (state = {movie_genres: []}, action) => {
     switch (action.type) {
@@ -97,6 +103,7 @@ const details = (state = {movie_genres: []}, action) => {
             return state;
     }
 }
+
 
 //create an edit store that is separate from the details data, in case we cancel. state is same as details, basically
 const edit = (state = { movie_genres: [] }, action) => {
@@ -115,6 +122,7 @@ const edit = (state = { movie_genres: [] }, action) => {
     }
 }
 
+//Snackbar reducer! basically sets a binary state. If I wanted to go more in depth, I could select messages, etc, too.
 const snackbarOpen = (state = false, action) => {
     switch (action.type) {
         case 'SNACKBAR_TRUE':

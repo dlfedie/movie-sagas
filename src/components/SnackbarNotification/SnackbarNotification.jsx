@@ -7,13 +7,14 @@ import CloseIcon from '@material-ui/icons/Close';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 
-//this is a component to handle snackbars
+//this is a component to handle snackbars. only handles a success, ran out of time to handle a cancel or 
+//some sort of other notification.
 
 class SnackbarNotification extends Component {
 
     //snackbars
 
-    //this is for other components to use. not needed here, but this will help for copy/paste
+    //this is for other components to use. not needed or used here, but this will help for copy/paste
     handleSuccess = () => {
         this.props.dispatch({
             type: 'SNACKBAR_TRUE'
@@ -21,7 +22,7 @@ class SnackbarNotification extends Component {
     }
 
 
-    //this is needed here to close the snackbar
+    //this is needed here to close the snackbar. unsure if clickaway is working.
     handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -34,6 +35,9 @@ class SnackbarNotification extends Component {
 
     render() {
         
+        //fairly basic snackbar that goes in the bottom left, tells you your changes have saved,
+        //and will close on clicking on the X icon.
+
         return (
             <Snackbar
                 className="success"

@@ -8,7 +8,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 // import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
-// styling for the Home page 
+// styling for the Home page.. unsure of if/how this is used, since I ended up using App.css a lot as well.
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -39,6 +39,7 @@ class Home extends Component {
         })
     }
 
+    //on the click of a poster, grab its id and get the details. also go to that page.
     clickedPoster = (id) => {
         //see if we can get movie id
         console.log('clicked poster', id);
@@ -66,7 +67,7 @@ class Home extends Component {
 
 
         //was attempting to set width on the columns... 'auto' works, but react doesn't like it.
-        //but it works and it's due
+        //but it works and the project is due
         // let columns = width === 'xs' || width === 'sm' ? 1 : 3;
 
         
@@ -77,9 +78,6 @@ class Home extends Component {
                 <h1>Movie Collection</h1>
                 <p>Click on a movie poster to see its details!</p>
                 {/* {JSON.stringify(this.props.movies)} */}
-                {/* <ul className="movieList" >
-                    {movieList}
-                </ul> */}
                 <div className={classes.root}>
                     <GridList
                         cols={'auto'}
