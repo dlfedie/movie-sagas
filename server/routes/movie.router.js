@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
         })
 })
 
-//PUT route to edit the title and description of a movie.
+//PUT route to edit the title and description of a movie.p
 router.put('/', (req, res) => {
     const updatedMovie = req.body;
     console.log('in PUT request, here is data:', updatedMovie);
