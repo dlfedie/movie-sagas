@@ -2,6 +2,8 @@
 
 This is a small full stack app that retrieves a list of movies from its database, allows a user to click on a movie poster, see the details, and edit those details.
 
+Here is a deployed app: https://mighty-fortress-03181.herokuapp.com/
+
 ## Built With
 
 JavaScript, Node.js, Express.js, React, Redux, Redux-saga, Material UI, SQL
